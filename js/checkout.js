@@ -17,34 +17,41 @@ function validate() {
 	var errorLastN = document.getElementById("errorLastN");
 	
 	// Validate fields entered by the user: name, phone, password, and email
-	if (fName.value.length < 3 || fEmail.value.length < 3 || fPhone.value.length < 3 || fPassword.value.length < 3 || fAddress.value.length < 3 || fLastN.value.length < 3) {
+	if (fName.value.length < 3 || fEmail.value.length < 3 || 
+		fPhone.value.length < 3 || fPassword.value.length < 3 || 
+		fAddress.value.length < 3 || fLastN.value.length < 3) {
+
 		error++;
-		fName.classList.add("is-invalid");
-		fEmail.classList.add("is-invalid");
-		fPhone.classList.add("is-invalid");
-		fPassword.classList.add("is-invalid");
-		fAddress.classList.add("is-invalid");
-		fLastN.classList.add("is-invalid");
+		// fName.classList.add("is-invalid");
+		// fEmail.classList.add("is-invalid");
+		// fPhone.classList.add("is-invalid");
+		// fPassword.classList.add("is-invalid");
+		// fAddress.classList.add("is-invalid");
+		// fLastN.classList.add("is-invalid");
 	}
 
-	if (fName.value.length > 3 || fName.value.match(/^[a-zA-Z]+$/) == null || fName.value.length == 0) { 
+	if (fName.value.length < 3 || fName.value.match(/^[a-zA-Z]+$/) == null) { 
 		error++;
 		fName.classList.add("is-invalid");
 	}
-	if (!/^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/.test(fEmail.value) || fEmail.value.length > 3) {
+	if (!/^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/.test(fEmail.value) || fEmail.value.length < 3) {
 		error++;
 		fEmail.classList.add("is-invalid");
 	}
-	if (fPhone.value.match(/^[0-9]+$/) == null || fPhone.value.length == 0) {
+	if (fPhone.value.match(/^[0-9]+$/) == null || fPhone.value.length < 3) {
 		error++;
 		fPhone.classList.add("is-invalid");
 	}
 
-	if (fPassword.value.length > 3 || fPassword.value.match(/^[a-zA-Z]+$/) == null || fPassword.value.match(/^[0-9]+$/) == null) {
+	
+	if (fPassword.value.length < 3 || !/[a-zA-Z]/.test(fPassword.value) 
+		|| !/[0-9]/.test(fPassword.value)) {
 		error++;
-		fPassword.classList.add("is-invalid");
+		// fPassword.classList.add("is-invalid");
 	}
-	 
+	
+	
+	 console.log(error);
 	if (error > 0) {
 		alert("Error");
 	} else {
